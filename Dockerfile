@@ -1,10 +1,10 @@
-FROM tensorflow/tensorflow:latest-gpu-py3-jupyter
+FROM tensorflow/tensorflow:latest-gpu-jupyter
 
-LABEL maintainer="Angel Sevilla Camins <a.sevillag@anchormen.nl>"
+LABEL maintainer="Naweed Chowdhury"
 
 # From https://hub.docker.com/r/rocker/r-ubuntu/dockerfile
 
-ENV R_VERSION=4.0.3
+ENV R_VERSION=4.1.2
 ENV S6_VERSION=v1.21.7.0
 ENV RSTUDIO_VERSION=latest
 ENV PATH=/usr/lib/rstudio-server/bin:$PATH
@@ -51,7 +51,7 @@ RUN apt-get update \
 RUN pip install rpy2
 
 # Install R-studio
-COPY scripts /scripts
+COPY scripts /scripts/
 RUN /scripts/install_rstudio.sh
 RUN /scripts/install_pandoc.sh
 EXPOSE 8787
